@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="asm-commons-3.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/asm-commons-3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-tree-3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/aspectjrt-1.8.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/aspectjweaver-1.8.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cglib-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cglib-nodep-3.2.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
