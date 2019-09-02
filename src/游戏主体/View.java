@@ -1,5 +1,6 @@
 package 游戏主体;
 
+import java.util.List;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class View extends JFrame implements KeyListener{
 
-    Game game;
+    private Game game;
 
     public View(Game game) {
         super();
@@ -34,7 +35,7 @@ public class View extends JFrame implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {
-        game.KeyInput(e.getKeyCode());
+        game.KeyInput(e.getKeyCode()); //键盘监听转发
     }
 
     class MyPanel extends JPanel {
@@ -44,7 +45,7 @@ public class View extends JFrame implements KeyListener{
             Graphics2D g2d = (Graphics2D)g;
             g2d.setFont(new Font("幼圆",0,30));
             g2d.drawString("您的得分是：" + game.getScore() + "分", Font.BOLD, 570);
-            ArrayList<Point> data = game.getData();
+            List<Point> data = game.getData();
             for(int i = 0 ; i < data.size() ; i++) {
                 Point point = data.get(i);
                 g2d.setColor(point.color);

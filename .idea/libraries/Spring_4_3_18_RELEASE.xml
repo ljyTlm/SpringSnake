@@ -26,6 +26,7 @@
       <root url="jar://$USER_HOME$/.ideaLibSources/spring-beans-4.3.18.RELEASE-sources.jar!/" />
       <root url="jar://$USER_HOME$/.ideaLibSources/aopalliance-1.0-sources.jar!/" />
       <root url="jar://$USER_HOME$/.ideaLibSources/spring-aop-4.3.18.RELEASE-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/spring-context-4.3.18.RELEASE-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -9,6 +9,7 @@ import 顶级接口.Snake;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 @Component("game")
 public class Game {
@@ -27,18 +28,26 @@ public class Game {
     @Autowired
     Food food;
 
-    int score;
+    private int score;
 
+    /**
+     * 启动游戏（根据数据刷新视图）
+     */
     public void startGame() {
         score = 0;
         while (true) {
-            int flag = snake.go(graph, food);
-            if (flag == 1) {
-                score++;
-                food.refresh(graph, snake);
+            int status = snake.go(graph, food);
+            switch (status) {
+                case Snake.DEATH:
+                    over();
+                    break;
+                case Snake.PRIZE:
+                    score++;
+                    food.refresh(graph, snake);
+                    break;
+                case Snake.SURVIVAL:
+                    break;
             }
-            if (flag == 0)
-                over();
             view.repaint();
             try {
                 Thread.sleep(config.getDifficulty()*10);
@@ -48,6 +57,10 @@ public class Game {
         }
     }
 
+    /**
+     * 键盘监听 w a s d
+     * @param code
+     */
     public void KeyInput(int code) {
         switch (code) {
             case KeyEvent.VK_W:
@@ -65,22 +78,47 @@ public class Game {
         }
     }
 
+    /**
+     * 获取当前游戏得分 属性要私有化
+     * @return
+     */
     public int getScore() {
         return score;
     }
 
-    public ArrayList<Point> getData() {
-        ArrayList<Point> data = new ArrayList<>();
-        for(int i = 0; i < graph.getData().size(); i ++) {
-            data.add(graph.getData().get(i));
-        }
-        for(int i = 0; i < snake.getData().size(); i ++) {
-            data.add(snake.getData().get(i));
-        }
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    /**
+     * 这个方法用来和 视图交互 告诉视图那个坐标画多大范围画什么颜色
+     * mvc设计模式 视图只用来渲染 不负责逻辑
+     * @return
+     */
+    public List<Point> getData() {
+        List<Point> data = new ArrayList<>();
+        List<Point> graphData = graph.getData();
+        copyList(data, graphData);
+        List<Point> snakeData = snake.getData();
+        copyList(data, snakeData);
         data.add(food.getData());
         return data;
     }
 
+    /**
+     * 私有辅助方法 用复制数组
+     * @param list
+     * @param resource
+     */
+    private void copyList(List list, List resource) {
+        for(int i = 0; i < resource.size(); i ++) {
+            list.add(resource.get(i));
+        }
+    }
+
+    /**
+     * 游戏结束方法，方便起见 直接整个游戏退出
+     */
     public void over() {
         System.exit(0);
     }

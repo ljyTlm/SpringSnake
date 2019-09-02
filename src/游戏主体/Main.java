@@ -14,7 +14,11 @@ import java.util.Scanner;
  */
 public class Main {
 
-    public static ApplicationContext context = null;
+    private static ApplicationContext context;
+
+    public static ApplicationContext getContext() {
+        return context;
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -27,4 +31,6 @@ public class Main {
         game.view = view;
         game.startGame();
     }
+
+
 }

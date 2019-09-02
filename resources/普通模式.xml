@@ -11,11 +11,11 @@
     <bean name="config" class="普通模式.ConfigImpl">
         <property name="width" value="610"></property>
         <property name="height" value="635"></property>
-        <property name="difficulty" value="70"></property>
+        <property name="difficulty" value="30"></property>
         <property name="edge" value="30"></property>
     </bean>
 
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-    <context:component-scan base-package="顶级接口, 普通模式, 游戏主体, AOP"/>
+    <context:component-scan base-package="顶级接口, 普通模式, 游戏主体, 切面增强"/>
 
 </beans>

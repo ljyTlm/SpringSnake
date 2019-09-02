@@ -15,6 +15,12 @@ public interface Snake {
 
     int DOWN = 4;
 
+    int DEATH = 0;
+
+    int PRIZE = 1;
+
+    int SURVIVAL = 2;
+
     List<Point> getData();
 
     int go(Graph g, Food f);
